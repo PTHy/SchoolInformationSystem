@@ -21,9 +21,7 @@ public class PersonInfo {
 	}
 	
 	public void ShowPersonInfo() {
-		System.out.println("입력된 정보 출력...");
 		System.out.println("학번 : "+this.getsNum());
 		System.out.println("이름 : "+this.getsName());
-		System.out.println("\n");
 	}
 }
