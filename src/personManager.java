@@ -9,7 +9,7 @@ public class personManager {
 
 	public int search(int sNum) {
 		for (int i = 0; i < cnt; i++) {
-			if (personInfos[i].sNum == sNum) {
+			if (personInfos[i].getsNum() == sNum) {
 				return i;
 			}
 		}
@@ -17,14 +17,42 @@ public class personManager {
 	}
 
 	public void inputData() {
-		String sName;
-		int sNum;
-
-		System.out.print("학번 : ");
-		sNum = sc.nextInt();
-		System.out.print("이름 : ");
-		sName = sc.next();
-		personInfos[cnt] = new PersonInfo(sNum, sName);
+		String sName = null;
+		int sNum = 0;
+		int sel;
+		
+		System.out.println("1.일반	2.학교	3.회사");
+		System.out.print("선택>>");
+		sel = sc.nextInt();
+		
+		if(sel >= 1 && sel <= 3) {
+			System.out.print("학번 : ");
+			sNum = sc.nextInt();
+			System.out.print("이름 : ");
+			sName = sc.next();
+		}
+			
+		
+		switch(sel) {
+		case 1 :
+			personInfos[cnt] = new PersonInfo(sNum, sName);
+			break;
+		case 2 :
+			String major;
+			int year;
+			System.out.print("전공 : ");
+			major = sc.next();
+			System.out.print("학년 : ");
+			year = sc.nextInt();
+			personInfos[cnt] = new StudentInfo(sNum, sName,major,year);
+			break;
+		case 3 :
+			String company;
+			System.out.print("회사 : ");
+			company = sc.next();
+			personInfos[cnt] = new CompanyInfo(sNum, sName,company);
+			break;
+		}
 		personInfos[cnt].ShowPersonInfo();
 		System.out.println("데이터 입력 완료");
 		cnt++;

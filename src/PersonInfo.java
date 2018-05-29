@@ -1,7 +1,7 @@
 
 public class PersonInfo {
-	int sNum;
-	String sName;
+	private int sNum;
+	private String sName;
 	public int getsNum() {
 		return sNum;
 	}
