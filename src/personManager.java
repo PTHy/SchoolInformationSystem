@@ -15,42 +15,64 @@ public class personManager {
 		}
 		return -1;
 	}
-
-	public void inputData() {
+	
+	public PersonInfo inputDataInfo() {
 		String sName = null;
 		int sNum = 0;
-		int sel;
+		System.out.print("학번 : ");
+		sNum = sc.nextInt();
+		System.out.print("이름 : ");
+		sName = sc.next();
+		
+		return new PersonInfo(sNum, sName);
+	}
+	
+	public PersonInfo SchoolInputInfo() {
+		String sName = null;
+		int sNum = 0;
+		String major;
+		int year;
+		System.out.print("학번 : ");
+		sNum = sc.nextInt();
+		System.out.print("이름 : ");
+		sName = sc.next();
+		System.out.print("전공 : ");
+		major = sc.next();
+		System.out.print("학년 : ");
+		year = sc.nextInt();
+		return new StudentInfo(sNum, sName, major, year);
+		
+	}
+	
+	public PersonInfo CompanyInputInfo() {
+		String sName = null;
+		int sNum = 0;
+		String company;
+		
+		System.out.print("학번 : ");
+		sNum = sc.nextInt();
+		System.out.print("이름 : ");
+		sName = sc.next();
+		System.out.print("회사 : ");
+		company = sc.next();
+		return new CompanyInfo(sNum, sName,company);
+	}
+	
+	public void inputData() {
 		
 		System.out.println("1.일반	2.학교	3.회사");
 		System.out.print("선택>>");
-		sel = sc.nextInt();
-		
-		if(sel >= 1 && sel <= 3) {
-			System.out.print("학번 : ");
-			sNum = sc.nextInt();
-			System.out.print("이름 : ");
-			sName = sc.next();
-		}
-			
+		int sel = sc.nextInt();
 		
 		switch(sel) {
 		case 1 :
-			personInfos[cnt] = new PersonInfo(sNum, sName);
+			personInfos[cnt] = inputDataInfo();
 			break;
 		case 2 :
-			String major;
-			int year;
-			System.out.print("전공 : ");
-			major = sc.next();
-			System.out.print("학년 : ");
-			year = sc.nextInt();
-			personInfos[cnt] = new StudentInfo(sNum, sName,major,year);
+			personInfos[cnt] = SchoolInputInfo();
 			break;
 		case 3 :
-			String company;
-			System.out.print("회사 : ");
-			company = sc.next();
-			personInfos[cnt] = new CompanyInfo(sNum, sName,company);
+			personInfos[cnt] = CompanyInputInfo();
 			break;
 		}
 		personInfos[cnt].ShowPersonInfo();
