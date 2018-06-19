@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Menu {
+public class Menu implements Menu_select{
 	
 	public static Scanner input = new Scanner(System.in);
 	public static personManager pm = new personManager();
@@ -9,16 +9,16 @@ public class Menu {
 		int sel = input.nextInt();
 		
 		switch(sel) {
-		case 1 :
+		case INSERT :
 			pm.inputData();
 			break;
-		case 2 :
+		case SEARCH :
 			pm.searchData();
 			break;
-		case 3 :
+		case DELETE :
 			pm.deleteData();
 			break;
-		case 4 :
+		case EXIT :
 			System.out.println("프로그램을 종료합니다...");
 			System.exit(0);
 			break;

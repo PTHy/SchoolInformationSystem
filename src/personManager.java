@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class personManager {
+public class personManager implements kind_select{
 	final int MAX_CNT = 100;
 	static Scanner sc = new Scanner(System.in);
 	PersonInfo[] personInfos = new PersonInfo[MAX_CNT];
@@ -65,15 +65,18 @@ public class personManager {
 		int sel = sc.nextInt();
 		
 		switch(sel) {
-		case 1 :
+		case GENERAL :
 			personInfos[cnt] = inputDataInfo();
 			break;
-		case 2 :
+		case SCHOOL :
 			personInfos[cnt] = SchoolInputInfo();
 			break;
-		case 3 :
+		case COMPANY :
 			personInfos[cnt] = CompanyInputInfo();
 			break;
+		default :
+			System.out.println("잘못된 입력입니다.");
+			return;
 		}
 		personInfos[cnt].ShowPersonInfo();
 		System.out.println("데이터 입력 완료");
