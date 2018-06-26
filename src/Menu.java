@@ -4,9 +4,18 @@ public class Menu implements Menu_select{
 	
 	public static Scanner input = new Scanner(System.in);
 	public static personManager pm = new personManager();
-		
-	public static void selectMenu() {
+	
+	public static int MenuInput() throws MenuSelectException{
 		int sel = input.nextInt();
+		if(sel > 4 || sel < 1) {
+			new MenuSelectException();
+			
+		}
+		return sel;
+	}
+	
+	public static void selectMenu() throws MenuSelectException {
+		int sel = MenuInput();
 		
 		switch(sel) {
 		case INSERT :
@@ -21,9 +30,6 @@ public class Menu implements Menu_select{
 		case EXIT :
 			System.out.println("프로그램을 종료합니다...");
 			System.exit(0);
-			break;
-		default : 
-			System.out.println("잘못된 입력입니다.");
 			break;
 		}
 	}

@@ -58,29 +58,31 @@ public class personManager implements kind_select{
 		return new CompanyInfo(sNum, sName,company);
 	}
 	
-	public void inputData() {
+	public void inputData(){
 		
 		System.out.println("1.일반	2.학교	3.회사");
 		System.out.print("선택>>");
-		int sel = sc.nextInt();
-		
-		switch(sel) {
-		case GENERAL :
-			personInfos[cnt] = inputDataInfo();
-			break;
-		case SCHOOL :
-			personInfos[cnt] = SchoolInputInfo();
-			break;
-		case COMPANY :
-			personInfos[cnt] = CompanyInputInfo();
-			break;
-		default :
-			System.out.println("잘못된 입력입니다.");
-			return;
+		try {
+			int sel = sc.nextInt();
+			
+			switch(sel) {
+			case GENERAL :
+				personInfos[cnt] = inputDataInfo();
+				break;
+			case SCHOOL :
+				personInfos[cnt] = SchoolInputInfo();
+				break;
+			case COMPANY :
+				personInfos[cnt] = CompanyInputInfo();
+				break;
+			default:
+				throw new KindSelectException();
+			}
+			personInfos[cnt].ShowPersonInfo();
+			System.out.println("데이터 입력 완료");
+			cnt++;
+		}catch(KindSelectException e) {
 		}
-		personInfos[cnt].ShowPersonInfo();
-		System.out.println("데이터 입력 완료");
-		cnt++;
 	}
 
 	public void searchData() {
